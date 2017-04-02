@@ -1,6 +1,7 @@
 package com.base.parser;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.*;
@@ -16,8 +17,10 @@ public class Parser {
     private static void readInput() {
         StringBuilder sbText = new StringBuilder();
         StringBuilder sbDoc = new StringBuilder();
-        for (int i = 1; i <= 15; i++) {
-            try (FileReader readFile = new FileReader("files/ft911_" + i);
+        File dir=new File("files");
+        File[] listOfFiles=dir.listFiles();
+        for (File f:listOfFiles) {
+            try (FileReader readFile = new FileReader(f);
                  BufferedReader bRead = new BufferedReader(readFile);) {
                 while (true) {
                     String line = bRead.readLine();
